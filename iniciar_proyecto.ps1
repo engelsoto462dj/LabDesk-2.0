@@ -1,4 +1,4 @@
-# ==============================================================================
+﻿# ==============================================================================
 # SENATI - Script de inicio rápido del proyecto LabDesk
 # Lanza automáticamente el Backend Django y el Frontend React en 2 terminales
 # ==============================================================================
@@ -12,7 +12,7 @@ $scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
 
 # 1. Iniciar Backend Django en terminal A
 Write-Host " [+] Lanzando Backend Django en http://127.0.0.1:8000/api/incidencias/..." -ForegroundColor Yellow
-Start-Process powershell -ArgumentList "-NoExit", "-Command", "Set-Location '$scriptPath\backend'; & '.\.venv\Scripts\Activate.ps1'; Write-Host '--- TERMINAL A: DJANGO REST FRAMEWORK (PUERTO 8000) ---' -ForegroundColor Green; python manage.py runserver"
+Start-Process powershell -ArgumentList "-NoExit", "-Command", "Set-Location '$scriptPath\backend'; if (Test-Path '.\venv\Scripts\Activate.ps1') { & '.\venv\Scripts\Activate.ps1' } elseif (Test-Path '.\.venv\Scripts\Activate.ps1') { & '.\.venv\Scripts\Activate.ps1' }; Write-Host '--- TERMINAL A: DJANGO REST FRAMEWORK (PUERTO 8000) ---' -ForegroundColor Green; python manage.py runserver"
 
 Start-Sleep -Seconds 2
 
