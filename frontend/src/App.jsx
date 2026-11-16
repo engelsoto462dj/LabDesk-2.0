@@ -848,7 +848,8 @@ export default function App() {
                   onClick={() => setFiltroEstado('vencidas')}
                   style={{ color: metricas.vencidas > 0 ? '#dc2626' : undefined }}
                 >
-                  ⚠️ Vencidas <span className="tab-count" style={{ background: metricas.vencidas > 0 ? '#fee2e2' : undefined, color: metricas.vencidas > 0 ? '#dc2626' : undefined }}>{metricas.vencidas}</span>
+                  <span className="pill-dot dot-red" style={{ marginRight: 2 }} />
+                  Vencidas <span className="tab-count" style={{ background: metricas.vencidas > 0 ? '#fee2e2' : undefined, color: metricas.vencidas > 0 ? '#dc2626' : undefined }}>{metricas.vencidas}</span>
                 </button>
                 <button
                   type="button"
@@ -858,7 +859,8 @@ export default function App() {
                   onClick={() => setFiltroEstado('proximas')}
                   style={{ color: metricas.proximas > 0 ? '#d97706' : undefined }}
                 >
-                  ⏰ Por vencer <span className="tab-count" style={{ background: metricas.proximas > 0 ? '#fef3c7' : undefined, color: metricas.proximas > 0 ? '#d97706' : undefined }}>{metricas.proximas}</span>
+                  <span className="pill-dot dot-orange" style={{ marginRight: 2 }} />
+                  Por vencer <span className="tab-count" style={{ background: metricas.proximas > 0 ? '#fef3c7' : undefined, color: metricas.proximas > 0 ? '#d97706' : undefined }}>{metricas.proximas}</span>
                 </button>
               </div>
 
@@ -1315,7 +1317,7 @@ export default function App() {
                 <div className="breakdown-bars-list">
                   <div className="breakdown-bar-item">
                     <div className="bar-item-info">
-                      <span className="bar-item-name">💻 Hardware</span>
+                      <span className="bar-item-name">Hardware</span>
                       <span className="bar-item-counts">
                         {metricas.categorias.hardware} ({metricas.total > 0 ? Math.round((metricas.categorias.hardware / metricas.total) * 100) : 0}%)
                       </span>
@@ -1330,7 +1332,7 @@ export default function App() {
 
                   <div className="breakdown-bar-item">
                     <div className="bar-item-info">
-                      <span className="bar-item-name">⚙️ Software</span>
+                      <span className="bar-item-name">Software</span>
                       <span className="bar-item-counts">
                         {metricas.categorias.software} ({metricas.total > 0 ? Math.round((metricas.categorias.software / metricas.total) * 100) : 0}%)
                       </span>
@@ -1345,7 +1347,7 @@ export default function App() {
 
                   <div className="breakdown-bar-item">
                     <div className="bar-item-info">
-                      <span className="bar-item-name">🌐 Red / Conectividad</span>
+                      <span className="bar-item-name">Red / Conectividad</span>
                       <span className="bar-item-counts">
                         {metricas.categorias.red} ({metricas.total > 0 ? Math.round((metricas.categorias.red / metricas.total) * 100) : 0}%)
                       </span>
