@@ -10,139 +10,120 @@ from incidencias.models import Incidencia, Comentario
 
 ahora = timezone.now()
 
+# 5 incidencias originales de la práctica de clase adaptadas con los nuevos requerimientos de LabDesk 2.0
 datos_prueba = [
     {
-        "titulo": "PC 08 no enciende - Posible falla de fuente",
-        "descripcion": "La estación de trabajo número 08 del laboratorio de desarrollo no responde al pulsar el botón de encendido. Se revisó el cable de poder y el tomacorriente estabilizado.",
+        "titulo": "PC no enciende",
+        "descripcion": "La máquina número 08 del laboratorio no responde al botón de encendido. Fuente de poder revisada.",
         "categoria": "hardware",
         "prioridad": "alta",
         "estado": "pendiente",
         "aula": "Lab 302",
         "ubicacion": "Lab 302 - Estación 08",
         "responsable": "Carlos Mendoza",
-        "fecha_limite": ahora - timedelta(days=2), # VENCIDA
+        "fecha_limite": ahora - timedelta(days=2),  # Vencida (plazo superado y estado pendiente)
         "comentarios": [
             {
-                "autor": "Prof. Alejandro Ruiz",
-                "texto": "Reportado durante la sesión práctica matutina. El alumno no pudo continuar el laboratorio."
+                "autor": "Soporte Técnico",
+                "texto": "Se verificó cableado y tomacorriente del módulo 08."
             },
             {
                 "autor": "Carlos Mendoza",
-                "texto": "Se acudió al aula a verificar. Se constató que la fuente de 500W está inoperativa. Se solicitó reemplazo a soporte técnico central."
+                "texto": "Falla confirmada en la fuente de poder. Se solicitó repuesto al almacén técnico."
             }
         ]
     },
     {
-        "titulo": "Pérdida de paquetes en Switch Core de Red",
-        "descripcion": "Intermitencia alta y pérdida del 35% de paquetes en los laboratorios 301 y 302 durante las descargas de dependencias npm y paquetes pip.",
-        "categoria": "red",
-        "prioridad": "alta",
+        "titulo": "Python no abre",
+        "descripcion": "El entorno virtual de Python 3.12 arroja error de PATH al intentar ejecutar desde PowerShell.",
+        "categoria": "software",
+        "prioridad": "media",
         "estado": "en_proceso",
         "aula": "Lab 301",
-        "ubicacion": "Lab 301 - Rack Principal A",
+        "ubicacion": "Lab 301 - Estación 14",
         "responsable": "Lucía Paredes",
-        "fecha_limite": ahora + timedelta(hours=8), # PRÓXIMA A VENCER (< 24h)
+        "fecha_limite": ahora + timedelta(hours=8),  # Próxima a vencer (< 24 horas y no resuelta)
         "comentarios": [
             {
-                "autor": "Lucía Paredes",
-                "texto": "Se realizó test de conectividad y ping sostenido a la puerta de enlace. Se observa congestión en el puerto uplink gigabit."
+                "autor": "Profesor a cargo",
+                "texto": "Alumnos de la sesión de la tarde no pueden correr scripts de práctica."
             },
             {
                 "autor": "Lucía Paredes",
-                "texto": "Se reinició el switch secundario y se está balanceando la carga en la VLAN 20 de estudiantes."
+                "texto": "Reconfigurando variables de entorno de sistema en las máquinas del aula."
             }
         ]
     },
     {
-        "titulo": "Instalación de entorno iOS / Xcode y simulador",
-        "descripcion": "Se requiere desplegar el simulador de iOS y la suite de desarrollo en las iMac del taller de cómputo para el taller de móviles.",
-        "categoria": "software",
-        "prioridad": "media",
+        "titulo": "Wi-Fi lento",
+        "descripcion": "Pérdida de paquetes en el Access Point del laboratorio durante la descarga de paquetes npm.",
+        "categoria": "red",
+        "prioridad": "alta",
         "estado": "pendiente",
         "aula": "Taller Mac",
-        "ubicacion": "Taller Mac - Estación 04",
+        "ubicacion": "Taller Mac - AP 02",
         "responsable": "Marco Rivera",
-        "fecha_limite": ahora + timedelta(days=3), # A TIEMPO
+        "fecha_limite": ahora + timedelta(days=3),  # En plazo
         "comentarios": [
             {
                 "autor": "Marco Rivera",
-                "texto": "Descarga de imagen de macOS e instaladores iniciada en el servidor local de imágenes."
+                "texto": "Se programó reinicio de access point y análisis de canales de frecuencia."
             }
         ]
     },
     {
-        "titulo": "Teclado mecánico con teclas bloqueadas",
-        "descripcion": "La barra espaciadora y las teclas de cursor presentan atascamiento continuo por polvo y uso intensivo en la estación 12.",
+        "titulo": "Teclado defectuoso",
+        "descripcion": "La tecla espaciadora y las flechas no responden en la estación de trabajo 12.",
         "categoria": "hardware",
         "prioridad": "baja",
         "estado": "resuelto",
         "aula": "Lab 204",
         "ubicacion": "Lab 204 - Estación 12",
         "responsable": "Ana Valdivia",
-        "fecha_limite": ahora - timedelta(days=1), # FECHA PASADA PERO RESUELTO -> NO DEBE MOSTRARSE VENCIDA
+        "fecha_limite": ahora - timedelta(days=1),  # Fecha pasada pero Resuelto: NO se muestra como vencida
         "comentarios": [
             {
                 "autor": "Ana Valdivia",
-                "texto": "Se desmontó el teclado averiado y se reemplazó por un periférico nuevo del inventario de Senati."
+                "texto": "Teclado USB reemplazado por una unidad operativa del inventario."
             },
             {
-                "autor": "Prof. Carmen Soto",
-                "texto": "Verificado y operativo al 100% en la clase de la tarde."
+                "autor": "Ana Valdivia",
+                "texto": "Pruebas de escritura completadas exitosamente."
             }
         ]
     },
     {
-        "titulo": "Actualización de Node.js v24 y extensiones VS Code",
-        "descripcion": "Se requiere actualizar los entornos de desarrollo para la clase de Full Stack y permitir la depuración de React 19.",
+        "titulo": "Navegador desactualizado",
+        "descripcion": "Google Chrome requiere actualización para soportar las nuevas herramientas de desarrollo de React 19.",
         "categoria": "software",
         "prioridad": "media",
         "estado": "resuelto",
         "aula": "Lab 302",
-        "ubicacion": "Lab 302 - Computadoras 01 a 20",
+        "ubicacion": "Lab 302 - Todas las terminales",
         "responsable": "Carlos Mendoza",
-        "fecha_limite": ahora + timedelta(days=1), # RESUELTO A TIEMPO
+        "fecha_limite": ahora + timedelta(days=2),  # Resuelta a tiempo
         "comentarios": [
             {
                 "autor": "Carlos Mendoza",
-                "texto": "Script de despliegue automatizado ejecutado vía PowerShell en las 20 terminales del aula."
-            }
-        ]
-    },
-    {
-        "titulo": "Proyector interactivo pierde señal HDMI",
-        "descripcion": "El proyector principal del auditorio se apaga o pierde señal intermitentemente tras 15 minutos de presentación continua.",
-        "categoria": "hardware",
-        "prioridad": "alta",
-        "estado": "en_proceso",
-        "aula": "Auditorio Central",
-        "ubicacion": "Auditorio Central - Cabina Multimedia",
-        "responsable": "Lucía Paredes",
-        "fecha_limite": ahora + timedelta(hours=14), # PRÓXIMA A VENCER (< 24h)
-        "comentarios": [
-            {
-                "autor": "Lucía Paredes",
-                "texto": "Se reemplazó el cable HDMI por uno blindado categoría 2.0. En observación térmica por posible sobrecalentamiento de la lámpara."
+                "texto": "Actualización masiva ejecutada en las 24 estaciones de trabajo del aula 302."
             }
         ]
     }
 ]
 
-print("Limpiando e insertando datos de prueba para LabDesk 2.0...")
-# Opcional: limpiar anteriores para consistencia
+print("Cargando las 5 incidencias oficiales de SENATI...")
 Incidencia.objects.all().delete()
 
 for d in datos_prueba:
-    comentarios_data = d.pop("comentarios", [])
+    comentarios = d.pop("comentarios", [])
     incidencia = Incidencia.objects.create(**d)
-    print(f" [+] Creada: {incidencia.titulo} | Responsable: {incidencia.responsable} | Estado: {incidencia.estado} | Vencimiento: {incidencia.estado_vencimiento}")
-    
-    for c in comentarios_data:
+    print(f" [+] Creada: {incidencia.titulo} | {incidencia.get_estado_display()} | Vencimiento: {incidencia.estado_vencimiento}")
+    for c in comentarios:
         Comentario.objects.create(
             incidencia=incidencia,
             autor=c["autor"],
             texto=c["texto"]
         )
-    print(f"     -> {len(comentarios_data)} comentarios agregados.")
 
 print(f"\nTotal incidencias registradas en SQLite: {Incidencia.objects.count()}")
 print(f"Total comentarios registrados: {Comentario.objects.count()}")
