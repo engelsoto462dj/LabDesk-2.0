@@ -6,7 +6,7 @@
 
 ---
 
-## 📌 Descripción del Proyecto
+## Descripción del Proyecto
 
 **LabDesk 2.0** es la evolución integral del sistema de gestión de incidencias de laboratorio desarrollado en clase. Permite realizar seguimiento técnico en tiempo real, asignación de responsables, control estricto de fechas límite (SLA) con alertas visuales de vencimiento, historial cronológico de comentarios por incidencia y un dashboard ejecutivo con métricas reales calculadas desde SQLite.
 
@@ -14,7 +14,7 @@ Diseñado bajo las pautas de **Apple Human Interface Guidelines (macOS / iOS)**:
 
 ---
 
-## 🚀 Requisitos Previos
+## Requisitos Previos
 
 - **Python 3.10+** (recomendado Python 3.12 o 3.14)
 - **Node.js 18+** o **20+** y **npm**
@@ -22,12 +22,12 @@ Diseñado bajo las pautas de **Apple Human Interface Guidelines (macOS / iOS)**:
 
 ---
 
-## 🛠️ Instalación y Puesta en Marcha
+## Instalación y Puesta en Marcha
 
 ### 1. Clonar el Repositorio
 ```powershell
-git clone <URL_DE_TU_REPOSITORIO>
-cd LabDesk-Django-React-App-main
+git clone https://github.com/engelsoto462dj/LabDesk-2.0.git
+cd LabDesk-2.0
 ```
 
 ### 2. Configurar y Ejecutar el Backend (Django REST Framework)
@@ -51,7 +51,7 @@ python semillas.py
 python manage.py runserver
 ```
 El servidor backend quedará disponible en:  
-👉 **http://127.0.0.1:8000/api/incidencias/**
+ **http://127.0.0.1:8000/api/incidencias/**
 
 ---
 
@@ -68,11 +68,11 @@ npm install
 npm run dev
 ```
 La aplicación web se abrirá en:  
-👉 **http://127.0.0.1:5173/**
+ **http://127.0.0.1:5173/**
 
 ---
 
-## 📋 Endpoints de la API REST (Django REST Framework)
+## Endpoints de la API REST (Django REST Framework)
 
 | Método | Endpoint | Descripción | Estado HTTP |
 |---|---|---|---|
@@ -89,7 +89,7 @@ La aplicación web se abrirá en:
 
 ---
 
-## 🎯 Cumplimiento de Criterios de Evaluación (Rúbrica de 20 Puntos)
+## Cumplimiento de Criterios de Evaluación (Rúbrica de 20 Puntos)
 
 ### 1. Responsables, Ubicación y Fecha Límite (4 pts)
 - **Modelo Extendido:** Campos `responsable`, `ubicacion` y `fecha_limite` integrados en el modelo `Incidencia`.
@@ -105,10 +105,10 @@ La aplicación web se abrirá en:
 - **Incidencias Vencidas:** Si `fecha_limite` ya pasó y el estado no es resuelto, se muestra un badge en rojo brillante con indicador pulsante y conteo del retraso (ej. `Venció hace 2 d`).
 - **Próximas a Vencer:** Aquellas que vencen en las próximas 24 horas y no están resueltas se destacan con badge ámbar/naranja (ej. `Vence en 8 h`).
 - **Regla Estricta:** Una incidencia con estado **Resuelto** nunca se muestra como vencida (aparece con badge verde `Resuelta`).
-- **Filtros Rápidos:** Botones en el Segmented Control para ver inmediatamente las incidencias `⚠️ Vencidas` y `⏰ Por vencer`.
+- **Filtros Rápidos:** Botones en el Segmented Control para ver inmediatamente las incidencias ` Vencidas` y ` Por vencer`.
 
 ### 4. Dashboard con Datos Reales (4 pts)
-- **Pestaña Ejecutiva:** Vista conmutador en la barra superior entre `📋 Incidencias` y `📊 Dashboard`.
+- **Pestaña Ejecutiva:** Vista conmutador en la barra superior entre ` Incidencias` y ` Dashboard`.
 - **Porcentaje de Resolución:** `(resueltas / total) × 100` (o `0%` si el total es 0) visualizado con un gráfico circular SVG animado estilo Apple Activity Ring.
 - **Indicadores Clave:** Total de incidencias, desglose por estado (Pendiente, En Proceso, Resuelto), incidencias vencidas y próximas.
 - **Distribuciones Gráficas:** Barras horizontales proporcionales estilo iOS Screen Time por Nivel de Prioridad (Alta, Media, Baja) y por Categoría Técnica (Hardware, Software, Red).
@@ -123,15 +123,14 @@ La aplicación web se abrirá en:
 
 ---
 
-## 🧪 Datos de Prueba Iniciales (Semillas)
+## Datos de Prueba Iniciales (Semillas)
 
-El script `semillas.py` carga automáticamente 6 incidencias representativas con comentarios:
-1. **PC 08 no enciende** — Hardware — Alta — **Vencida** (hace 2 días, Pendiente) — 2 comentarios.
-2. **Pérdida de paquetes en Switch Core** — Red — Alta — **Próxima a vencer** (en 8 horas, En Proceso) — 2 comentarios.
-3. **Instalación de entorno iOS / Xcode** — Software — Media — **A tiempo** (en 3 días, Pendiente) — 1 comentario.
-4. **Teclado mecánico con teclas bloqueadas** — Hardware — Baja — **Resuelta** (fecha pasada, pero estado Resuelto: no vence) — 2 comentarios.
-5. **Actualización de Node.js v24** — Software — Media — **Resuelta** (Resuelto a tiempo) — 1 comentario.
-6. **Proyector interactivo pierde señal HDMI** — Hardware — Alta — **Próxima a vencer** (en 14 horas, En Proceso) — 1 comentario.
+El script `semillas.py` carga automáticamente las 5 incidencias oficiales con sus comentarios:
+1. **PC no enciende** — Hardware — Alta — **Pendiente** (Vencida, hace 2 días) — 2 comentarios.
+2. **Python no abre** — Software — Media — **En proceso** (Próxima a vencer, en 8 horas) — 2 comentarios.
+3. **Wi-Fi lento** — Red — Alta — **Pendiente** (En plazo, en 3 días) — 1 comentario.
+4. **Teclado defectuoso** — Hardware — Baja — **Resuelto** (Fecha pasada pero estado Resuelto: no vence) — 2 comentarios.
+5. **Navegador desactualizado** — Software — Media — **Resuelto** (Resuelta a tiempo) — 1 comentario.
 
 Para resembrar los datos en cualquier momento:
 ```powershell
@@ -141,7 +140,7 @@ python semillas.py
 
 ---
 
-## 📹 Estructura Sugerida para el Video Demostrativo (3 a 5 min)
+##Estructura Sugerida para el Video Demostrativo (3 a 5 min)
 
 1. **Introducción (30 seg):** Presentación del estudiante, nombre del proyecto LabDesk 2.0 y explicación de la arquitectura (Django REST Framework en puerto 8000 + React 19 en puerto 5173 con SQLite).
 2. **Responsables, Ubicación y Fechas Límite (1 min):** Crear una nueva incidencia asignando un responsable, aula y fecha límite. Mostrar cómo aparece en el listado y cómo se edita.
